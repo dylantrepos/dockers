@@ -2,3 +2,20 @@
 version: '3.3'
 
 # Ici on liste l'ensemble des services (les containers)
+services:
+
+  mariadb:
+    image: mariadb:10.1
+    container_name: mariadb
+    command: --default-authentification-plugin=mysql_native_password
+    environment: 
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: espocrm
+      MYSQL_USER: espocrm
+      MYSQL_PASSWORD: database_password
+    volumes:
+      - mariadbData:/var/lib/mysql
+    restart: always
+
+volumes:
+  mariadbData: 
