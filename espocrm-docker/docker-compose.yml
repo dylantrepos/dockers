@@ -17,5 +17,23 @@ services:
       - mariadbData:/var/lib/mysql
     restart: always
 
+  espocrm:
+    image: nrameloclock/espocrm
+    container_name: espocrm
+    ports:
+      - 81:80
+    environment: 
+      ESPOCRM_DATABASE_HOST: mariadb
+      ESPOCRM_DATABASE_USER: espocrm
+      ESPOCRM_DATABASE_PASSWORD: database_password
+      ESPOCRM_ADMIN_USERNAME: admin
+      ESPOCRM_ADMIN_PASSWORD: password
+    volumes:
+      - espocrmData:/var/www/html
+    restart: always
+    links:
+      - mariadb:mariadb
+
 volumes:
   mariadbData: 
+  espocrmData:
