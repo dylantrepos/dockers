@@ -1,0 +1,4 @@
+# On indique ici la version de docker-compose
+version: '3.3'
+
+# Ici on liste l'ensemble des services (les containers)
