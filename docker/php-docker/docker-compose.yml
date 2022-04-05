@@ -1,0 +1,24 @@
+# On indique ici la version de notre docker-compose
+version: '3.3'
+
+# On va lister l'ensemble des services (nos containers)
+services:
+
+  # Hier, on a lancé manuellement cette commande
+  # docker run --rm -p 8080:80 --name testphp8 -v "$PWD":/var/www/html php:8.1-apache
+
+  # On déclare un container nommé php8
+  php8: 
+    image: php:8.1-apache
+    ports: 
+      - 8080:80
+    volumes:
+      - ./src:/var/www/html
+
+
+  php5: 
+    image: php:5.6-apache
+    ports: 
+      - 8081:80
+    volumes:
+      - ./src:/var/www/html
